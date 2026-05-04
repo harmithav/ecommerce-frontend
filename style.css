@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f5f5f5;
+}
+
+/* Navbar */
+.navbar {
+  background: black;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+/* Banner */
+.banner {
+  text-align: center;
+  padding: 40px;
+  background: lightgray;
+}
+
+/* PRODUCT GRID (IMPORTANT) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+/* CARD DESIGN */
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* IMAGE FIX (VERY IMPORTANT) */
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* TEXT */
+.card h3 {
+  margin: 10px 0;
+}
+
+.card p {
+  color: green;
+  font-weight: bold;
+}
+
+/* BUTTON */
+.card button {
+  background: orange;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
