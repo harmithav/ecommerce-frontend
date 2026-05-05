@@ -33,39 +33,21 @@ function displayProducts(products) {
 
 
 // 🟢 ADD TO CART FUNCTION
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 function addToCart(product) {
   cart.push(product);
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
 }
 
-
-// 🟢 UPDATE CART COUNT
 function updateCartCount() {
-  const count = document.getElementById("cart-count");
-  if (count) {
-    count.innerText = cart.length;
-  }
+  document.getElementById("cart-count").innerText = cart.length;
 }
 
-// 🟢 INITIAL CART COUNT
 updateCartCount();
 
 
-// 🟢 SEARCH FUNCTION
-const searchInput = document.getElementById("search");
-
-if (searchInput) {
-  searchInput.addEventListener("input", (e) => {
-    const value = e.target.value.toLowerCase();
-
-    const filtered = allProducts.filter(p =>
-      p.name.toLowerCase().includes(value)
-    );
-
-    displayProducts(filtered);
-  });
-}
 const searchInput = document.getElementById("search");
 
 if (searchInput) {
