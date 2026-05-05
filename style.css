@@ -49,6 +49,26 @@ body {
   border-radius: 5px;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #131921;
+  color: white;
+  padding: 10px 20px;
+}
+
+.navbar input {
+  width: 40%;
+  padding: 8px;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
 /* BUTTON */
 button {
   background: #ff9900;
