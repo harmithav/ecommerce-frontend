@@ -2,7 +2,7 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // 🟢 STEP 2: Fetch products from backend
-fetch("http://localhost:5000/api/products")
+fetch("https://ecommerce-backend-1-uinl.onrender.com")
   .then(res => res.json())
   .then(data => {
     const container = document.getElementById("products");
