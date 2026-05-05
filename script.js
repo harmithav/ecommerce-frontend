@@ -1,63 +1,34 @@
-// 🟢 LOAD CART (top of file)
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let allProducts = [];
 
-// 🟢 FETCH PRODUCTS FROM BACKEND
+// ✅ FETCH PRODUCTS FROM BACKEND
 fetch("https://ecommerce-backend-1-uinl.onrender.com/api/products")
   .then(res => res.json())
   .then(data => {
-    allProducts = data;
-    displayProducts(data);
-  })
-  .catch(err => console.log(err));
+    console.log("API DATA:", data); // 👈 DEBUG (VERY IMPORTANT)
 
+    const container = document.getElementById("products");
 
-// 🟢 DISPLAY PRODUCTS FUNCTION
-function displayProducts(products) {
-  const container = document.getElementById("products");
-  container.innerHTML = "";
+    if (!container) {
+      console.error("❌ products div not found");
+      return;
+    }
 
-  products.forEach(product => {
-    container.innerHTML += `
-      <div class="card">
-        <img src="${product.image}" />
+    container.innerHTML = "";
+
+    data.forEach(product => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
         <h3>${product.name}</h3>
         <p>₹${product.price}</p>
-        <button onclick='addToCart(${JSON.stringify(product)})'>
-          Add to Cart
-        </button>
-      </div>
-    `;
+        <button>Add to Cart</button>
+      `;
+
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    console.error("❌ Fetch Error:", err);
   });
-}
-
-
-// 🟢 ADD TO CART FUNCTION
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function addToCart(product) {
-  cart.push(product);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-}
-
-function updateCartCount() {
-  document.getElementById("cart-count").innerText = cart.length;
-}
-
-updateCartCount();
-
-
-const searchInput = document.getElementById("search");
-
-if (searchInput) {
-  searchInput.addEventListener("input", (e) => {
-    const value = e.target.value.toLowerCase();
-
-    const filtered = allProducts.filter(p =>
-      p.name.toLowerCase().includes(value)
-    );
-
-    displayProducts(filtered);
-  });
-}
