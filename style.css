@@ -97,3 +97,44 @@ body{
   top:10px;
   cursor:pointer;
 }
+
+.account-box{
+  position:relative;
+  display:inline-block;
+}
+
+.account-box button{
+  background:#ff9900;
+  border:none;
+  padding:10px 15px;
+  cursor:pointer;
+  border-radius:5px;
+}
+
+.dropdown{
+  display:none;
+  position:absolute;
+  right:0;
+  background:white;
+  min-width:200px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.2);
+  padding:10px;
+  border-radius:5px;
+  z-index:100;
+}
+
+.dropdown a{
+  display:block;
+  margin:10px 0;
+  text-decoration:none;
+  color:black;
+}
+
+.dropdown p{
+  font-size:14px;
+  color:gray;
+}
+
+.show{
+  display:block;
+}

@@ -24,7 +24,27 @@
     <a href="cart.html">
   Cart (<span id="cart-count">0</span>)
 </a>
-    <a href="login.html" id="login-link">Login</a>
+    <div class="account-box">
+
+  <button id="account-btn">
+    My Account
+  </button>
+
+  <div id="account-dropdown" class="dropdown">
+
+    <p id="user-email"></p>
+
+    <a href="cart.html">My Cart</a>
+
+    <a href="#">My Orders</a>
+
+    <a href="#" onclick="logoutUser()">
+      Logout
+    </a>
+
+  </div>
+
+    </div>
   </div>
 </nav>
 

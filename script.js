@@ -1,13 +1,46 @@
 // ✅ SHOW USER AFTER LOGIN
 
+// ✅ ACCOUNT SYSTEM
+
 const user = localStorage.getItem("user");
 
-const loginLink =
-  document.getElementById("login-link");
+const accountBtn =
+  document.getElementById("account-btn");
 
-if(user && loginLink){
+const dropdown =
+  document.getElementById("account-dropdown");
 
-  loginLink.innerText = user;
+const userEmail =
+  document.getElementById("user-email");
+
+
+// SHOW EMAIL
+if(user){
+
+  userEmail.innerText = "Email: " + user;
+
+}else{
+
+  userEmail.innerText = "Not Logged In";
+}
+
+
+// TOGGLE DROPDOWN
+accountBtn.addEventListener("click", () => {
+
+  dropdown.classList.toggle("show");
+
+});
+
+
+// LOGOUT
+function logoutUser(){
+
+  localStorage.removeItem("user");
+
+  alert("Logged Out");
+
+  window.location.href = "login.html";
 }
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
