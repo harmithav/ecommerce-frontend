@@ -12,34 +12,37 @@ const userEmail =
   document.getElementById("user-email");
 
 
-// HIDE DROPDOWN INITIALLY
-dropdown.style.display = "none";
+// ONLY RUN IF ELEMENTS EXIST
+if(accountBtn && dropdown && userEmail){
 
+  // HIDE INITIALLY
+  dropdown.style.display = "none";
 
-// SHOW EMAIL ONLY IF LOGGED IN
-if(user){
+  // SHOW EMAIL
+  if(user){
 
-  userEmail.innerText = "Email: " + user;
-
-}else{
-
-  userEmail.innerText = "Not Logged In";
-}
-
-
-// TOGGLE DROPDOWN
-accountBtn.addEventListener("click", () => {
-
-  if(dropdown.style.display === "none"){
-
-    dropdown.style.display = "block";
+    userEmail.innerText = "Email: " + user;
 
   }else{
 
-    dropdown.style.display = "none";
+    userEmail.innerText = "Not Logged In";
   }
 
-});
+  // TOGGLE
+  accountBtn.addEventListener("click", () => {
+
+    if(dropdown.style.display === "none"){
+
+      dropdown.style.display = "block";
+
+    }else{
+
+      dropdown.style.display = "none";
+    }
+
+  });
+
+}
 
 
 // LOGOUT
