@@ -1,3 +1,15 @@
+// ✅ SHOW USER AFTER LOGIN
+
+const user = localStorage.getItem("user");
+
+const loginLink =
+  document.getElementById("login-link");
+
+if(user && loginLink){
+
+  loginLink.innerText = user;
+}
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let allProducts = [];
 

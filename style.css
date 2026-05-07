@@ -82,3 +82,18 @@ body{
   cursor:pointer;
   margin-top:10px;
 }
+.password-box{
+  position:relative;
+}
+
+.password-box input{
+  width:100%;
+  padding:10px;
+}
+
+.password-box span{
+  position:absolute;
+  right:10px;
+  top:10px;
+  cursor:pointer;
+}
