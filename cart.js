@@ -5,15 +5,17 @@ const container = document.getElementById("cart-items");
 let total = 0;
 
 cart.forEach((product, index) => {
+
   total += product.price;
 
   container.innerHTML += `
     <div class="card">
-      <img src="${product.image}" width="150">
+      <img src="${product.image}">
       <h3>${product.name}</h3>
       <p>₹${product.price}</p>
 
       <button onclick="increase(${index})">+</button>
+
       <button onclick="decrease(${index})">-</button>
     </div>
   `;
@@ -22,8 +24,10 @@ cart.forEach((product, index) => {
 document.getElementById("total").innerText =
   "Total: ₹" + total;
 
-// INCREASE
+
+// ✅ INCREASE
 function increase(index) {
+
   cart.push(cart[index]);
 
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -31,8 +35,10 @@ function increase(index) {
   location.reload();
 }
 
-// DECREASE
+
+// ✅ DECREASE
 function decrease(index) {
+
   cart.splice(index, 1);
 
   localStorage.setItem("cart", JSON.stringify(cart));
