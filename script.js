@@ -134,30 +134,47 @@ if(accountBtn && dropdown && userEmail){
   dropdown.style.display = "none";
 
   // SHOW EMAIL
-  if(user){
+  // ✅ CHECK LOGIN
 
-    userEmail.innerText =
-      "Email: " + user;
+if(user){
 
-  }else{
+  // USER LOGGED IN
+  accountBtn.innerText = "My Account";
 
-    userEmail.innerText =
-      "Not Logged In";
-  }
+  userEmail.innerText =
+    "Email: " + user;
+
+}else{
+
+  // USER NOT LOGGED IN
+  accountBtn.innerText = "Login";
+
+  userEmail.innerText =
+    "Please Login";
+}
 
   // TOGGLE DROPDOWN
   accountBtn.addEventListener("click", () => {
 
-    if(dropdown.style.display === "none"){
+  // IF NOT LOGGED IN
+  if(!user){
 
-      dropdown.style.display = "block";
+    window.location.href = "login.html";
 
-    }else{
+    return;
+  }
 
-      dropdown.style.display = "none";
-    }
+  // TOGGLE DROPDOWN
+  if(dropdown.style.display === "none"){
 
-  });
+    dropdown.style.display = "block";
+
+  }else{
+
+    dropdown.style.display = "none";
+  }
+
+});
 
 }
 
