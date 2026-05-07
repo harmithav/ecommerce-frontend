@@ -138,3 +138,26 @@ body{
 .show{
   display:block;
 }
+
+.qty-box{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+}
+
+.qty-box button{
+  width:30px;
+  height:30px;
+  border:none;
+  background:#ff9900;
+  cursor:pointer;
+  font-size:18px;
+  border-radius:5px;
+}
+
+.qty-box span{
+  font-size:18px;
+  font-weight:bold;
+}

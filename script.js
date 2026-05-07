@@ -45,9 +45,33 @@ function displayProducts(products) {
 
       <p>₹${product.price}</p>
 
-      <button onclick='addToCart(${JSON.stringify(product)})'>
-        Add to Cart
+      ${
+  getProductQuantity(product.name) === 0
+
+  ?
+
+  `<button onclick='addToCart(${JSON.stringify(product)})'>
+      Add to Cart
+   </button>`
+
+  :
+
+  `<div class="qty-box">
+
+      <button onclick="decreaseQty('${product.name}')">
+        -
       </button>
+
+      <span>
+        ${getProductQuantity(product.name)}
+      </span>
+
+      <button onclick='addToCart(${JSON.stringify(product)})'>
+        +
+      </button>
+
+   </div>`
+}
     `;
 
     container.appendChild(card);
@@ -62,13 +86,47 @@ function addToCart(product){
 
   cart.push(product);
 
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem(
+    "cart",
+    JSON.stringify(cart)
+  );
 
   updateCartCount();
 
-  alert("Added to cart!");
+  displayProducts(allProducts);
 }
 
+// 🟢 GET PRODUCT QUANTITY
+function getProductQuantity(productName){
+
+  return cart.filter(item =>
+    item.name === productName
+  ).length;
+}
+
+
+// 🟢 DECREASE QUANTITY
+function decreaseQty(productName){
+
+  const index = cart.findIndex(item =>
+    item.name === productName
+  );
+
+  if(index !== -1){
+
+    cart.splice(index, 1);
+
+    localStorage.setItem(
+      "cart",
+      JSON.stringify(cart)
+    );
+
+    displayProducts(allProducts);
+
+    updateCartCount();
+  }
+
+}
 
 // 🟢 UPDATE CART COUNT
 function updateCartCount(){
