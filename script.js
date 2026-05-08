@@ -7,78 +7,81 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let allProducts = [];
 
 
-// 🟢 FETCH PRODUCTS
+// 🟢 FETCH PRODUCTS FROM BACKEND
 fetch("https://ecommerce-backend-1-uinl.onrender.com/api/products")
   .then(res => res.json())
   .then(data => {
 
-    console.log("PRODUCTS:", data);
+    console.log("ALL PRODUCTS:", data);
 
     allProducts = data;
 
     displayProducts(data);
 
   })
-  .catch(err => console.log(err));
+  .catch(error => console.log(error));
+
+
 
 
 // 🟢 DISPLAY PRODUCTS
-function displayProducts(products) {
+function displayProducts(products){
 
   const container =
     document.getElementById("products");
-
-  if(!container) return;
 
   container.innerHTML = "";
 
   products.forEach(product => {
 
-    const card = document.createElement("div");
+    const quantity =
+      getProductQuantity(product.name);
 
-    card.classList.add("card");
+    container.innerHTML += `
 
-    card.innerHTML = `
-      <img src="${product.image}" />
+      <div class="card">
 
-      <h3>${product.name}</h3>
+        <img src="${product.image}" />
 
-      <p>₹${product.price}</p>
+        <h3>${product.name}</h3>
 
-      ${
-  getProductQuantity(product.name) === 0
+        <p>₹${product.price}</p>
 
-  ?
+        <small>${product.category}</small>
 
-  `<button onclick='addToCart(${JSON.stringify(product)})'>
-      Add to Cart
-   </button>`
+        ${
+          quantity === 0
 
-  :
+          ?
 
-  `<div class="qty-box">
+          `<button onclick='addToCart(${JSON.stringify(product)})'>
+              Add to Cart
+           </button>`
 
-      <button onclick="decreaseQty('${product.name}')">
-        -
-      </button>
+          :
 
-      <span>
-        ${getProductQuantity(product.name)}
-      </span>
+          `<div class="qty-box">
 
-      <button onclick='addToCart(${JSON.stringify(product)})'>
-        +
-      </button>
+              <button onclick="decreaseQty('${product.name}')">
+                -
+              </button>
 
-   </div>`
-}
+              <span>${quantity}</span>
+
+              <button onclick='addToCart(${JSON.stringify(product)})'>
+                +
+              </button>
+
+           </div>`
+        }
+
+      </div>
     `;
-
-    container.appendChild(card);
-
   });
 
 }
+
+
 
 
 // 🟢 ADD TO CART
@@ -96,21 +99,16 @@ function addToCart(product){
   displayProducts(allProducts);
 }
 
-// 🟢 GET PRODUCT QUANTITY
-function getProductQuantity(productName){
-
-  return cart.filter(item =>
-    item.name === productName
-  ).length;
-}
 
 
-// 🟢 DECREASE QUANTITY
+
+// 🟢 DECREASE QTY
 function decreaseQty(productName){
 
-  const index = cart.findIndex(item =>
-    item.name === productName
-  );
+  const index =
+    cart.findIndex(item =>
+      item.name === productName
+    );
 
   if(index !== -1){
 
@@ -121,12 +119,25 @@ function decreaseQty(productName){
       JSON.stringify(cart)
     );
 
-    displayProducts(allProducts);
-
     updateCartCount();
-  }
 
+    displayProducts(allProducts);
+  }
 }
+
+
+
+
+// 🟢 GET PRODUCT QTY
+function getProductQuantity(productName){
+
+  return cart.filter(item =>
+    item.name === productName
+  ).length;
+}
+
+
+
 
 // 🟢 UPDATE CART COUNT
 function updateCartCount(){
@@ -142,25 +153,34 @@ function updateCartCount(){
 }
 
 
+
+
 // 🟢 SEARCH PRODUCTS
 function searchProducts(){
 
-  const searchInput =
-    document.getElementById("search");
-
-  if(!searchInput) return;
-
   const value =
-    searchInput.value.toLowerCase();
+    document.getElementById("search")
+    .value
+    .toLowerCase();
 
   const filtered =
     allProducts.filter(product =>
-      product.name.toLowerCase().includes(value)
+
+      product.name
+      .toLowerCase()
+      .includes(value)
+
+      ||
+
+      product.category
+      .toLowerCase()
+      .includes(value)
     );
 
   displayProducts(filtered);
-
 }
+
+
 
 
 // 🟢 INITIAL CART COUNT
@@ -169,11 +189,12 @@ updateCartCount();
 
 
 
-// ==========================
-// ✅ ACCOUNT SYSTEM
-// ==========================
+// =========================
+// 🟢 ACCOUNT SYSTEM
+// =========================
 
-const user = localStorage.getItem("user");
+const user =
+  localStorage.getItem("user");
 
 const accountBtn =
   document.getElementById("account-btn");
@@ -185,56 +206,54 @@ const userEmail =
   document.getElementById("user-email");
 
 
-// ONLY RUN IF ELEMENTS EXIST
+
 if(accountBtn && dropdown && userEmail){
 
-  // HIDE INITIALLY
   dropdown.style.display = "none";
 
-  // SHOW EMAIL
-  // ✅ CHECK LOGIN
 
-if(user){
+  // LOGIN CHECK
+  if(user){
 
-  // USER LOGGED IN
-  accountBtn.innerText = "My Account";
+    accountBtn.innerText = "My Account";
 
-  userEmail.innerText =
-    "Email: " + user;
-
-}else{
-
-  // USER NOT LOGGED IN
-  accountBtn.innerText = "Login";
-
-  userEmail.innerText =
-    "Please Login";
-}
-
-  // TOGGLE DROPDOWN
-  accountBtn.addEventListener("click", () => {
-
-  // IF NOT LOGGED IN
-  if(!user){
-
-    window.location.href = "login.html";
-
-    return;
-  }
-
-  // TOGGLE DROPDOWN
-  if(dropdown.style.display === "none"){
-
-    dropdown.style.display = "block";
+    userEmail.innerText =
+      "Email: " + user;
 
   }else{
 
-    dropdown.style.display = "none";
+    accountBtn.innerText = "Login";
+
+    userEmail.innerText =
+      "Please Login";
   }
 
-});
+
+
+  // BUTTON CLICK
+  accountBtn.addEventListener("click", () => {
+
+    if(!user){
+
+      window.location.href =
+        "login.html";
+
+      return;
+    }
+
+    if(dropdown.style.display === "none"){
+
+      dropdown.style.display = "block";
+
+    }else{
+
+      dropdown.style.display = "none";
+    }
+
+  });
 
 }
+
 
 
 // 🟢 LOGOUT
@@ -244,5 +263,6 @@ function logoutUser(){
 
   alert("Logged Out");
 
-  window.location.href = "login.html";
+  window.location.href =
+    "login.html";
 }
