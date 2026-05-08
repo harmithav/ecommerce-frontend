@@ -354,3 +354,55 @@ body{
   font-size:18px;
   font-weight:bold;
 }
+
+/* CATEGORY BAR */
+
+.categories{
+
+  display: flex;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  overflow-x: auto;
+
+  background: white;
+
+}
+
+
+/* CATEGORY BUTTONS */
+
+.categories button{
+
+  padding: 12px 25px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: #081120;
+
+  color: white;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  white-space: nowrap;
+
+}
+
+
+/* HOVER EFFECT */
+
+.categories button:hover{
+
+  background: orange;
+
+  transform: scale(1.05);
+
+}

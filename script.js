@@ -280,3 +280,23 @@ function logoutUser(){
   window.location.href =
     "login.html";
 }
+
+// 🟢 FILTER CATEGORY
+
+function filterCategory(category){
+
+  if(category === "All"){
+
+    displayProducts(allProducts);
+
+    return;
+  }
+
+  const filteredProducts =
+    allProducts.filter(product =>
+      product.category === category
+    );
+
+  displayProducts(filteredProducts);
+
+}
