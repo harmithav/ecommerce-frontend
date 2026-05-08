@@ -10,18 +10,30 @@ let allProducts = [];
 // 🟢 FETCH PRODUCTS FROM BACKEND
 fetch("https://ecommerce-backend-1-uinl.onrender.com/api/products")
   .then(res => res.json())
+
   .then(data => {
 
     console.log("ALL PRODUCTS:", data);
 
-    document.getElementById("loading").style.display = "none";
+    // ✅ REMOVE LOADING TEXT
+    const loading =
+      document.getElementById("loading");
+
+    if(loading){
+      loading.style.display = "none";
+    }
 
     allProducts = data;
 
     displayProducts(data);
 
   })
-  .catch(error => console.log(error));
+
+  .catch(error => {
+
+    console.log(error);
+
+  });
 
 
 
