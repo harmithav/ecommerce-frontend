@@ -14,6 +14,8 @@ fetch("https://ecommerce-backend-1-uinl.onrender.com/api/products")
 
     console.log("ALL PRODUCTS:", data);
 
+    document.getElementById("loading").style.display = "none";
+
     allProducts = data;
 
     displayProducts(data);
