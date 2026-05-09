@@ -11,7 +11,7 @@ fetch("https://ecommerce-backend-1-uinl.onrender.com/api/products")
 
     allProducts = data;
 
-    displayProducts(allProducts);
+    displayProducts(allProducts.slice(0,20));
 
   })
 
@@ -35,7 +35,7 @@ function displayProducts(products){
 
       <div class="card">
 
-        <img src="${product.image}" />
+        <img loading="lazy" src="${product.image}" />
 
         <h3>${product.name}</h3>
 
@@ -64,8 +64,7 @@ function filterProducts(category){
 
   if(category === "All"){
 
-    displayProducts(allProducts);
-
+    displayProducts(allProducts.slice(0,20));
     return;
   }
 
@@ -74,7 +73,7 @@ function filterProducts(category){
       product.category === category
     );
 
-  displayProducts(filteredProducts);
+  displayProducts(filteredProducts.slice(0,20));
 
 }
 
@@ -95,7 +94,7 @@ function searchProducts(){
       product.name.toLowerCase().includes(value)
     );
 
-  displayProducts(filtered);
+  displayProducts(filtered.slice(0,20));
 
 }
 
@@ -103,7 +102,7 @@ function filterProducts(category){
 
   if(category === "All"){
 
-    displayProducts(allProducts);
+    displayProducts(allProducts.slice(0,20));
 
   }else{
 
@@ -112,7 +111,7 @@ function filterProducts(category){
         product.category === category
       );
 
-    displayProducts(filteredProducts);
+    displayProducts(filteredProducts.slice(0,20));
   }
 
 }
