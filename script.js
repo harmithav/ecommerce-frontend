@@ -99,7 +99,23 @@ function searchProducts(){
 
 }
 
+function filterProducts(category){
 
+  if(category === "All"){
+
+    displayProducts(allProducts);
+
+  }else{
+
+    const filteredProducts =
+      allProducts.filter(product =>
+        product.category === category
+      );
+
+    displayProducts(filteredProducts);
+  }
+
+}
 
 
 // ADD TO CART
