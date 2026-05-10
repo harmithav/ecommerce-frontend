@@ -480,3 +480,105 @@ button:hover{
   color: white;
   transform: scale(1.05);
 }
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media screen and (max-width: 768px) {
+
+  /* NAVBAR */
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    align-items: center;
+  }
+
+  .navbar h2 {
+    font-size: 32px;
+  }
+
+  /* SEARCH */
+  #search {
+    width: 90%;
+  }
+
+  /* NAV LINKS */
+  .nav-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links a,
+  .account-btn {
+    font-size: 16px;
+  }
+
+  /* BANNER */
+  .banner {
+    height: 300px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .banner h1 {
+    font-size: 38px;
+  }
+
+  .banner p {
+    font-size: 18px;
+  }
+
+  /* CATEGORY BUTTONS */
+  .categories {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+  }
+
+  .categories button {
+    margin: 5px;
+    font-size: 14px;
+  }
+
+  /* PRODUCTS GRID */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  /* PRODUCT CARD */
+  .card {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .card img {
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .card h3 {
+    font-size: 18px;
+  }
+
+  .card p {
+    font-size: 16px;
+  }
+
+  .card button {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 20px;
+  }
+}
