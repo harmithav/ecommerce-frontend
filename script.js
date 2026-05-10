@@ -21,24 +21,22 @@ fetch("https://ecommerce-backend-1-uinl.onrender.com/api/products")
 
 
 // DISPLAY PRODUCTS
-
 function displayProducts(products){
 
   const container =
     document.getElementById("products");
 
-  container.innerHTML = "";
+  let html = "";
 
   products.forEach(product => {
 
-    container.innerHTML += `
-
+    html += `
       <div class="card">
 
-        <img 
-        loading="lazy"
-        src="${product.image}" 
-        onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'"
+        <img
+          loading="lazy"
+          src="${product.image}"
+          onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'"
         />
 
         <h3>${product.name}</h3>
@@ -52,11 +50,10 @@ function displayProducts(products){
         </button>
 
       </div>
-
     `;
-
   });
 
+  container.innerHTML = html;
 }
 
 

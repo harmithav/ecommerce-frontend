@@ -518,19 +518,19 @@ button:hover{
   }
 
   /* BANNER */
-  .banner {
-    height: 300px;
-    padding: 20px;
-    text-align: center;
-  }
+  .banner{
+  height: 250px;
+  text-align: center;
+  padding: 20px;
+}
 
-  .banner h1 {
-    font-size: 38px;
-  }
+  .banner h1{
+  font-size: 28px;
+}
 
-  .banner p {
-    font-size: 18px;
-  }
+.banner p{
+  font-size: 16px;
+}
 
   /* CATEGORY BUTTONS */
   .categories {
