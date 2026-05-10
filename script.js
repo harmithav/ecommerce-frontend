@@ -35,7 +35,11 @@ function displayProducts(products){
 
       <div class="card">
 
-        <img loading="lazy" src="${product.image}" />
+        <img 
+        loading="lazy"
+        src="${product.image}" 
+        onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'"
+        />
 
         <h3>${product.name}</h3>
 
