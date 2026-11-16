@@ -47,30 +47,27 @@ body{
 
 /* HERO SECTION */
 
-.hero{
 
+/* HERO SECTION - OPTIMIZED */
+
+.hero {
   height: 400px;
 
   background-image:
-  linear-gradient(
-    rgba(0,0,0,0.6),
-    rgba(0,0,0,0.6)
-  ),
-
-  url("https://images.unsplash.com/photo-1523381210434-271e8be1f52b");
+    linear-gradient(
+      rgba(0,0,0,0.6),
+      rgba(0,0,0,0.6)
+    ),
+    url("https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=65");
 
   background-size: cover;
-
   background-position: center;
 
   display: flex;
-
   align-items: center;
 
   padding-left: 80px;
-
   color: white;
-
 }
 
 
